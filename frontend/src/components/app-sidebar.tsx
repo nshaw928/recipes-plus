@@ -1,4 +1,4 @@
-import { CookingPot, Home } from "lucide-react"
+import { CookingPot, Home, Wheat } from "lucide-react"
  
 import {
   Sidebar,
@@ -6,6 +6,7 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -28,25 +29,41 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application Name</SidebarGroupLabel>
-          <SidebarGroupContent>
+        <SidebarHeader>
             <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                <SidebarMenuItem>
+                    <SidebarMenuButton size="lg" asChild>
+                    <a href="/">
+                        <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                        <Wheat className="size-4" />
+                        </div>
+                        <div className="flex flex-col gap-0.5 leading-none">
+                        <span className="font-semibold">Application Name</span>
+                        </div>
                     </a>
-                  </SidebarMenuButton>
+                    </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
+        </SidebarMenu>
+      </SidebarHeader>
+        <SidebarContent>
+            <SidebarGroup>
+                <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+                <SidebarGroupContent>
+                    <SidebarMenu>
+                    {items.map((item) => (
+                        <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton asChild>
+                            <a href={item.url}>
+                            <item.icon />
+                            <span>{item.title}</span>
+                            </a>
+                        </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    ))}
+                    </SidebarMenu>
+                </SidebarGroupContent>
+            </SidebarGroup>
+        </SidebarContent>
     </Sidebar>
   )
 }
